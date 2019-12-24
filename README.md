@@ -1,1 +1,4 @@
 # JAVA-DOWNLOADER
+
+## File-Schema
+-[x] DOWNLOAD CLASS
