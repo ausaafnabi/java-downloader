@@ -1,4 +1,5 @@
 # JAVA-DOWNLOADER
 
 ## File-Schema
--[x] DOWNLOAD CLASS
+- [x] Download Class
+- [] ProgressRenderer Class
