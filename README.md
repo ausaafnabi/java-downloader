@@ -2,4 +2,5 @@
 
 ## File-Schema
 - [x] Download Class
-- [] ProgressRenderer Class
+- [x] ProgressRenderer Class
+- [x] Download Class
