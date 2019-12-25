@@ -4,5 +4,4 @@
 - [x] Download Class
 - [x] ProgressRenderer Class
 - [x] DownloadTableModel Class
-- [ ] DownloadManager Class
-979
+- [x] DownloadManager Class

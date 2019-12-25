@@ -1,6 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.net;
+import java.net.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.event.*;
@@ -30,7 +30,7 @@ public class DownloadManager extends JFrame implements Observer
 
 		JMenuBar menuBar = new JMenuBar();
 		JMenu fileMenu = new JMenu("File");
-		fileMenu.setMneumonic(KeyEvent.VK_F);
+		fileMenu.setMnemonic(KeyEvent.VK_F);
 		JMenuItem fileExitMenuItem = new JMenuItem("Exit",KeyEvent.VK_X);
 		fileExitMenuItem.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -39,15 +39,15 @@ public class DownloadManager extends JFrame implements Observer
 		});
 		fileMenu.add(fileExitMenuItem);
 		menuBar.add(fileMenu);
-		setJMenubar(menuBar);
+		setJMenuBar(menuBar);
 		//set-up add panel
 		
 		JPanel addPanel = new JPanel();
 		addTextField = new JTextField(30);
 		addPanel.add(addTextField);
 		JButton addButton = new JButton("Add Download");
-		addButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
+		addButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				actionAdd();
 			}
 		});
@@ -92,7 +92,7 @@ public class DownloadManager extends JFrame implements Observer
 		});
 
 		resumeButton.setEnabled(false);
-		buttonPanel.add(resumeButton);
+		buttonsPanel.add(resumeButton);
 		cancelButton = new JButton("Cancel");
 		cancelButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -120,18 +120,18 @@ public class DownloadManager extends JFrame implements Observer
 	private void actionExit() {
 		System.exit(0);
 	}	
-	private void actionsAdd() {
-		URL verifiedUrl = verifyURL(addTextField.getText());
+	private void actionAdd() {
+		URL verifiedUrl = verifyUrl(addTextField.getText());
 		if (verifiedUrl!=null){
-			tableModel.adddownloads(new Download(verifiedUrl));
-			addTExtField.setText("");	
+			tableModel.addDownload(new Download(verifiedUrl));
+			addTextField.setText("");	
 		} else {
 			JOptionPane.showMessageDialog(this,"Invalid Download URL","ERROR",JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	private URL verifyUrl(String url){
-		if(!url.toLowerCase().startWith("http://"))
+		if(!url.toLowerCase().startsWith("http://"))
 			return null;
 		URL verifiedUrl = null;
 		try {
@@ -146,8 +146,8 @@ public class DownloadManager extends JFrame implements Observer
 	}
 
 	private void tableSelectionChanged(){
-		if(selectionDownload != null)
-			selectedDownload.deleteObserver(Downloadmanager.this);
+		if(selectedDownload != null)
+			selectedDownload.deleteObserver(DownloadManager.this);
 		if(!clearing&& table.getSelectedRow()>-1){
 			selectedDownload = tableModel.getDownload(table.getSelectedRow());
 			selectedDownload.addObserver(DownloadManager.this);
@@ -181,7 +181,7 @@ public class DownloadManager extends JFrame implements Observer
 		updateButtons();
 	}
 
-	private void updateButton() {
+	private void updateButtons() {
 		if(selectedDownload != null){
 			int status = selectedDownload.getStatus();
 			switch(status){
