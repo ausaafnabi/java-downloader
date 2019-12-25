@@ -223,6 +223,14 @@ public class DownloadManager extends JFrame implements Observer
 			}
 			
 		public static void main(String[] args) {
+			 try { 
+  
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel"); 
+        	} 
+        	catch (Exception e) { 
+            	System.out.println("Look and Feel not set"); 
+        	} 
+
 			SwingUtilities.invokeLater(new Runnable(){
 				public void run(){
 					DownloadManager manager = new DownloadManager();
